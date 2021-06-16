@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ======================================MENU======================================*/
+/** ========================================================> MENU */
 .menu {
 }
 .menu__icon {
@@ -187,7 +187,7 @@ h1, h2, h3, h4, h5, h6 {
   }  
 }
 
-/* ========================================================> CONTENT__GENERATION */
+/** ========================================================> CONTENT__GENERATION */
 .generation__block { 
 }
 .generation {
@@ -251,7 +251,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
 
-/* ========================================================> SECTION__BRANDS */
+/** ========================================================> SECTION__BRANDS */
 .brands {
 }
   .brands__row {
@@ -337,7 +337,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;  
 }
 
-
+/** ========================================================> SLIDER */
 .slider-wrapper {
 padding: 120px 0 60px 0;
 background-color: #f7f7f7;
@@ -411,3 +411,25 @@ justify-content: start;
   }
 }
 
+/** ========================================================> SHOP */
+.shop {
+  display: flex;
+  overflow: hidden;
+}
+.shop__block {
+  width: 533px;
+}
+.shop__block-row {
+  display: flex;
+}
+.shop__block-culomn {
+  display: flex;
+  flex-direction: column;
+  display: inline-block;
+}
+.shop__background {
+}
+.shop__logo {
+}
+.shop__text {
+}

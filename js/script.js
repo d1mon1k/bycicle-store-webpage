@@ -1,5 +1,5 @@
 'use strict';
-//====================BurgerMenu==>
+//*=============================================================================BurgerMenu==>
 const iconMenu = document.querySelector('.icon-menu'),
   menuBody = document.querySelector('.menu__body');
 
@@ -9,7 +9,7 @@ iconMenu.addEventListener('click', function (event) {
 })
 
 
-//====================Slider==>
+//*=============================================================================Slider==>
 const slider = document.querySelector('.slider'),
   sliderTrack = document.querySelector('.slider__track'),
   items = document.querySelectorAll('.slider__item'),
@@ -23,8 +23,8 @@ let sliderIndex = 0,
   trfRegExp = /[-0-9.]+(?=px)/,
   allowSwipe = true;
 
+const posThreshold = 100 //! Наверное в идеале отслеживать скорость пальца , но как ?
 
-const posThreshold = 100 //!
 
 function getEvent() {
   return event.type.search('touch') != -1 ? event.touches[0] : event
@@ -88,17 +88,12 @@ function rollSlide() {
   rollDot()
 }
 
-
-
 for (let item of items) {
   let dot = document.createElement('div')
   dot.classList.add('slider__dot')
   dotsContainer.appendChild(dot)
 }
 const dots = document.querySelectorAll('.slider__dot')
-
-
-
 
 
 dots.forEach((dot, index) => {
