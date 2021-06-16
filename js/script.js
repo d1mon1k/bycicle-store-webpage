@@ -1,3 +1,4 @@
+'use strict';
 //====================BurgerMenu==>
 const iconMenu = document.querySelector('.icon-menu'),
   menuBody = document.querySelector('.menu__body');
@@ -14,7 +15,6 @@ const slider = document.querySelector('.slider'),
   items = document.querySelectorAll('.slider__item'),
   dotsContainer = document.querySelector('.slider__dots');
 
-
 let sliderIndex = 0,
   posInit = 0,
   posX1 = 0,
@@ -23,9 +23,9 @@ let sliderIndex = 0,
   trfRegExp = /[-0-9.]+(?=px)/,
   allowSwipe = true;
 
+
 const posThreshold = 100 //!
 
-console.log(posThreshold)
 function getEvent() {
   return event.type.search('touch') != -1 ? event.touches[0] : event
 }
@@ -37,10 +37,10 @@ function swipeStart() {
 
   posInit = posX1 = evt.clientX
 
-  slider.addEventListener('touchmove', swipeAction)
-  slider.addEventListener('touchend', swipeEnd)
-  slider.addEventListener('mousemove', swipeAction)
-  slider.addEventListener('mouseup', swipeEnd)
+  sliderTrack.addEventListener('touchmove', swipeAction)
+  sliderTrack.addEventListener('touchend', swipeEnd)
+  sliderTrack.addEventListener('mousemove', swipeAction)
+  sliderTrack.addEventListener('mouseup', swipeEnd)
 }
 
 function swipeAction() {
@@ -64,17 +64,19 @@ function swipeAction() {
 function swipeEnd() {
   let posFinal = posInit - posX1
 
-  slider.removeEventListener('touchmove', swipeAction)
-  slider.removeEventListener('touchend', swipeEnd)
-  slider.removeEventListener('mousemove', swipeAction)
-  slider.removeEventListener('mouseup', swipeEnd)
+  sliderTrack.removeEventListener('touchmove', swipeAction)
+  sliderTrack.removeEventListener('touchend', swipeEnd)
+  sliderTrack.removeEventListener('mousemove', swipeAction)
+  sliderTrack.removeEventListener('mouseup', swipeEnd)
 
   if (Math.abs(posFinal) > posThreshold) {
-    if (posInit < posX1) {
+    if (posInit < posX1 && sliderIndex > 0) {
       sliderIndex--
-    } else if (posInit > posX1) {
+    } else if (posInit > posX1 && sliderIndex < items.length - 1) {
       sliderIndex++
     }
+    rollSlide()
+  } else {
     rollSlide()
   }
 }
@@ -107,8 +109,6 @@ dots.forEach((dot, index) => {
 
     rollDot()
     rollSlide()
-
-    // dots[sliderIndex].classList.add('slider__dot_active')
   })
 })
 
@@ -119,13 +119,22 @@ function rollDot() {
   dots[sliderIndex].classList.add('slider__dot_active')
 }
 
-slider.addEventListener('touchstart', swipeStart)
-slider.addEventListener('mousedown', swipeStart)
+function init() {
+  console.log('resize');
+  slideWidth = document.querySelector('.slider').offsetWidth;
+
+  sliderTrack.style.width = slideWidth * items.length + 'px';
+  items.forEach(item => {
+    item.style.width = slideWidth + 'px';
+    item.style.height = 'auto';
+  });
+  rollSlide();
+}
+
+
+sliderTrack.addEventListener('touchstart', swipeStart)
+sliderTrack.addEventListener('mousedown', swipeStart)
+window.addEventListener('resize', init);
 sliderTrack.style.transform = `translate3d(0px, 0px, 0px)`
 rollDot()
-
-
-
-
-
-
+init();
