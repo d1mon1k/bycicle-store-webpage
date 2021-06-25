@@ -412,24 +412,45 @@ justify-content: start;
 }
 
 /** ========================================================> SHOP */
-.shop {
+.shop {  
+}
+.shop-body {
   display: flex;
-  overflow: hidden;
+}
+.shop__column {
+  flex: 0 1 16.666%;  
+}
+.shop__column_b {
+  flex: 0 1 33.333%;
 }
 .shop__block {
-  width: 533px;
 }
-.shop__block-row {
+.block-shop {
+}
+.block-shop__row {
   display: flex;
 }
-.shop__block-culomn {
-  display: flex;
-  flex-direction: column;
-  display: inline-block;
+.block-shop__column {
+  flex: 0 1 50%;
 }
-.shop__background {
+.block-shop__item {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: auto;
+  padding: 0 0 50% 0;
 }
-.shop__logo {
+.block-shop__item_b {
+  padding: 0 0 200.3% 0;
 }
-.shop__text {
+.block-shop__item_l {
+  padding: 0 0 100% 0;
+}
+/* .item {
+}
+.item__logo {
+} */
+.shop-footer {
+}
+.shop-footer__btn {
 }
